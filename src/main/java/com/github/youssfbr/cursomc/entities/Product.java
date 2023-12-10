@@ -62,7 +62,6 @@ public class Product {
     private Instant updatedAt;
 
     @ManyToMany
-   // @JsonIgnore
     @JoinTable(name = "tb_product_category",
             joinColumns = @JoinColumn(name = "product_id"),
             inverseJoinColumns = @JoinColumn(name = "category_id"))
