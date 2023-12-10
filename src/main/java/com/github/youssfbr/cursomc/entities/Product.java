@@ -5,7 +5,9 @@ import lombok.*;
 
 import java.math.BigDecimal;
 import java.time.Instant;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -49,8 +51,8 @@ public class Product {
 
     @ElementCollection
     @JoinTable(name = "tb_product_url_img",
-            joinColumns = @JoinColumn(name = "produto_id"))
-    private Set<String> imgUrl = new HashSet<>();
+            joinColumns = @JoinColumn(name = "product_id"))
+    private List<String> imgUrl = new ArrayList<>();
 
 
     @Column(updatable = false, columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
@@ -60,6 +62,7 @@ public class Product {
     private Instant updatedAt;
 
     @ManyToMany
+   // @JsonIgnore
     @JoinTable(name = "tb_product_category",
             joinColumns = @JoinColumn(name = "product_id"),
             inverseJoinColumns = @JoinColumn(name = "category_id"))

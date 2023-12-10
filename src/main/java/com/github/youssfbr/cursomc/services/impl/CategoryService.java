@@ -1,5 +1,6 @@
 package com.github.youssfbr.cursomc.services.impl;
 
+import com.github.youssfbr.cursomc.dtos.CategoryResponseDTO;
 import com.github.youssfbr.cursomc.entities.Category;
 import com.github.youssfbr.cursomc.repositories.ICategoryRepository;
 import com.github.youssfbr.cursomc.services.ICategoryService;
@@ -23,8 +24,9 @@ public class CategoryService implements ICategoryService {
 
     @Override
     @Transactional(readOnly = true)
-    public Category findById(Long id) {
+    public CategoryResponseDTO findById(Long id) {
         return categoryRepository.findById(id)
+                .map(CategoryResponseDTO::new)
                 .orElseThrow(null);
     }
 }

@@ -1,5 +1,6 @@
 package com.github.youssfbr.cursomc.controllers;
 
+import com.github.youssfbr.cursomc.dtos.CategoryResponseDTO;
 import com.github.youssfbr.cursomc.entities.Category;
 import com.github.youssfbr.cursomc.services.ICategoryService;
 import lombok.RequiredArgsConstructor;
@@ -24,7 +25,7 @@ public class CategoryController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Category> findById(@PathVariable Long id) {
+    public ResponseEntity<CategoryResponseDTO> findById(@PathVariable Long id) {
         return ResponseEntity.ok(categoryService.findById(id));
     }
 }
