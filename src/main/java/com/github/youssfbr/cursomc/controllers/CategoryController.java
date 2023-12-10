@@ -1,12 +1,14 @@
 package com.github.youssfbr.cursomc.controllers;
 
 import com.github.youssfbr.cursomc.entities.Category;
+import com.github.youssfbr.cursomc.services.ICategoryService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.Arrays;
 import java.util.List;
 
 @RestController
@@ -14,12 +16,15 @@ import java.util.List;
 @RequestMapping("/api/categories")
 public class CategoryController {
 
+    private final ICategoryService categoryService;
+
     @GetMapping
-    public List<Category> list() {
+    public ResponseEntity<List<Category>> findAll() {
+        return ResponseEntity.ok(categoryService.findAll());
+    }
 
-        final Category cat1 = new Category(1L , "Computing");
-        final Category cat2 = new Category(2L , "Office");
-
-        return Arrays.asList(cat1, cat2);
+    @GetMapping("/{id}")
+    public ResponseEntity<Category> findById(@PathVariable Long id) {
+        return ResponseEntity.ok(categoryService.findById(id));
     }
 }
