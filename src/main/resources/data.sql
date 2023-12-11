@@ -40,3 +40,11 @@ INSERT INTO tb_product_category (product_id, category_id) VALUES (14, 4);
 INSERT INTO tb_product_category (product_id, category_id) VALUES (15, 5);
 INSERT INTO tb_product_category (product_id, category_id) VALUES (16, 5);
 INSERT INTO tb_product_category (product_id, category_id) VALUES (17, 5);
+
+INSERT INTO TB_STATE (name, created_at, active) VALUES ('Ceará', '2023-12-10 21:51', true);
+INSERT INTO TB_STATE (name, created_at, active) VALUES ('Minas Gerais', '2023-12-10 21:52', true);
+
+INSERT INTO TB_CITY (name, state_id, created_at, active) VALUES ('Fortaleza', 1, '2023-12-10 21:55:00', true);
+INSERT INTO TB_CITY (name, state_id, created_at, active) VALUES ('Uberlândia', 2, '2023-12-10 21:56:00', true);
+INSERT INTO TB_CITY (name, state_id, created_at, active) VALUES ('Caucaia', 1, '2023-12-10 21:55:00', true);
+

@@ -4,17 +4,15 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.Instant;
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
 @Getter
 @Setter
 @NoArgsConstructor
 @RequiredArgsConstructor
-@Table(name = "tb_category")
+@Table(name = "tb_city")
 @EqualsAndHashCode(of = "id")
-public class Category {
+public class City {
 
     @Id
     @NonNull
@@ -25,6 +23,11 @@ public class Category {
     @Column(length = 50, nullable = false)
     private String name;
 
+    @NonNull
+    @ManyToOne
+    @JoinColumn(name = "state_id")
+    private State state;
+
     private Boolean active;
 
     @Column(updatable = false, columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
@@ -32,9 +35,6 @@ public class Category {
 
     @Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
     private Instant updatedAt;
-
-    @ManyToMany(mappedBy = "categories")
-    private List<Product> products = new ArrayList<>();
 
 
     @PrePersist

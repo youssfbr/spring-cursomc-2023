@@ -20,6 +20,7 @@ import java.util.Set;
 public class Product {
 
     @Id
+    @NonNull
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 

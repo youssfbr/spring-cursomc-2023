@@ -12,9 +12,9 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @RequiredArgsConstructor
-@Table(name = "tb_category")
+@Table(name = "tb_state")
 @EqualsAndHashCode(of = "id")
-public class Category {
+public class State {
 
     @Id
     @NonNull
@@ -33,8 +33,8 @@ public class Category {
     @Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
     private Instant updatedAt;
 
-    @ManyToMany(mappedBy = "categories")
-    private List<Product> products = new ArrayList<>();
+    @OneToMany(mappedBy = "state")
+    private List<City> cities = new ArrayList<>();
 
 
     @PrePersist
