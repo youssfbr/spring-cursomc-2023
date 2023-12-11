@@ -48,3 +48,12 @@ INSERT INTO TB_CITY (name, state_id, created_at, active) VALUES ('Fortaleza', 1,
 INSERT INTO TB_CITY (name, state_id, created_at, active) VALUES ('Uberlândia', 2, '2023-12-10 21:56:00', true);
 INSERT INTO TB_CITY (name, state_id, created_at, active) VALUES ('Caucaia', 1, '2023-12-10 21:55:00', true);
 
+INSERT INTO TB_CUSTOMER (name, email, customer_type, cpf_or_cnpj, created_at, active) VALUES ('Alisson Youssf', 'youssfbr@gmail.com', 0, '123456789', '2023-12-10 23:46:00', true);
+INSERT INTO TB_PHONE VALUES (1, '9999-9999');
+INSERT INTO TB_ADDRESS (public_place, number, district, complement, cep, city_id, customer_id) VALUES ('rua das onças', '8718', 'Centro', 'próximo a Marinha', 60000000, 1, 1);
+
+INSERT INTO TB_CUSTOMER (name, email, customer_type, cpf_or_cnpj, created_at, active) VALUES ('Maria Silva', 'maria@gmail.com', 0, '36378912377', '2023-12-10 23:50:00', true);
+INSERT INTO TB_PHONE VALUES (2, '27363323');
+INSERT INTO TB_PHONE VALUES (2, '93838393');
+INSERT INTO TB_ADDRESS (public_place, number, district, complement, cep, city_id, customer_id) VALUES ('Rua Flores', '300', 'Jardim', 'Apto 303', 38220834, 2, 2);
+INSERT INTO TB_ADDRESS (public_place, number, district, complement, cep, city_id, customer_id) VALUES ('Avenida Matos', '105', 'Centro', 'Sala 800', '38777012', 2, 2);
