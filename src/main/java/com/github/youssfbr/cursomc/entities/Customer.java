@@ -37,9 +37,8 @@ public class Customer {
     private String cpfOrCnpj;
 
     @NonNull
-    @Getter(AccessLevel.NONE)
-    @Setter(AccessLevel.NONE)
-    private Integer customerType;
+    @Enumerated(EnumType.ORDINAL)
+    private CustomerType customerType;
 
 
     @OneToMany(mappedBy = "customer")
@@ -57,13 +56,6 @@ public class Customer {
     @Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
     private Instant updatedAt;
 
-    public CustomerType getCustomerType() {
-        return CustomerType.toEnum(customerType);
-    }
-
-    public void setCustomerType(CustomerType customerType) {
-        this.customerType = customerType.getId();
-    }
 
     @PrePersist
     private void prePersist() {
