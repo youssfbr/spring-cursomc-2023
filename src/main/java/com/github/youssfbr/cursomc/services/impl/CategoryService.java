@@ -1,7 +1,6 @@
 package com.github.youssfbr.cursomc.services.impl;
 
 import com.github.youssfbr.cursomc.dtos.CategoryResponseDTO;
-import com.github.youssfbr.cursomc.entities.Category;
 import com.github.youssfbr.cursomc.repositories.ICategoryRepository;
 import com.github.youssfbr.cursomc.services.ICategoryService;
 import com.github.youssfbr.cursomc.services.exceptions.ResourceNotFoundException;
@@ -20,8 +19,11 @@ public class CategoryService implements ICategoryService {
 
     @Override
     @Transactional(readOnly = true)
-    public List<Category> findAll() {
-        return categoryRepository.findAll();
+    public List<CategoryResponseDTO> findAll() {
+        return categoryRepository.findAll()
+                .stream()
+                .map(CategoryResponseDTO::new)
+                .toList();
     }
 
     @Override

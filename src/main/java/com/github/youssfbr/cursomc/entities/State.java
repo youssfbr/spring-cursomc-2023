@@ -25,6 +25,10 @@ public class State {
     @Column(length = 50, nullable = false)
     private String name;
 
+    @OneToMany(mappedBy = "state")
+    private final List<City> cities = new ArrayList<>();
+
+
     private Boolean active;
 
     @Column(updatable = false, columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
@@ -32,9 +36,6 @@ public class State {
 
     @Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
     private Instant updatedAt;
-
-    @OneToMany(mappedBy = "state")
-    private List<City> cities = new ArrayList<>();
 
 
     @PrePersist

@@ -52,8 +52,11 @@ INSERT INTO TB_CUSTOMER (name, email, customer_type, cpf_or_cnpj, created_at, ac
 INSERT INTO TB_PHONE VALUES (1, '9999-9999');
 INSERT INTO TB_ADDRESS (public_place, number, district, complement, cep, city_id, customer_id) VALUES ('rua das onças', '8718', 'Centro', 'próximo a Marinha', 60000000, 1, 1);
 
-INSERT INTO TB_CUSTOMER (name, email, customer_type, cpf_or_cnpj, created_at, active) VALUES ('Maria Silva', 'maria@gmail.com', 0, '36378912377', '2023-12-10 23:50:00', true);
+INSERT INTO TB_CUSTOMER (name, email, customer_type, cpf_or_cnpj, created_at, active) VALUES ('Maria Silva', 'maria@gmail.com', 1, '36378912377', '2023-12-10 23:50:00', true);
 INSERT INTO TB_PHONE VALUES (2, '27363323');
 INSERT INTO TB_PHONE VALUES (2, '93838393');
 INSERT INTO TB_ADDRESS (public_place, number, district, complement, cep, city_id, customer_id) VALUES ('Rua Flores', '300', 'Jardim', 'Apto 303', 38220834, 2, 2);
 INSERT INTO TB_ADDRESS (public_place, number, district, complement, cep, city_id, customer_id) VALUES ('Avenida Matos', '105', 'Centro', 'Sala 800', '38777012', 2, 2);
+
+INSERT INTO TB_ORDER (moment, customer_id, delivery_address_id, created_at, active) VALUES ('2017-09-30 10:32', 2, 2, '2023-12-12 00:07', true);
+INSERT INTO TB_ORDER (moment, customer_id, delivery_address_id, created_at, active) VALUES ('2017-10-10 19:35', 2, 3, '2023-12-12 00:11', true);

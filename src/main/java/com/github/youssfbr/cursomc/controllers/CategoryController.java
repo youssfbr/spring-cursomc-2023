@@ -1,7 +1,6 @@
 package com.github.youssfbr.cursomc.controllers;
 
 import com.github.youssfbr.cursomc.dtos.CategoryResponseDTO;
-import com.github.youssfbr.cursomc.entities.Category;
 import com.github.youssfbr.cursomc.services.ICategoryService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -20,7 +19,7 @@ public class CategoryController {
     private final ICategoryService categoryService;
 
     @GetMapping
-    public ResponseEntity<List<Category>> findAll() {
+    public ResponseEntity<List<CategoryResponseDTO>> findAll() {
         return ResponseEntity.ok(categoryService.findAll());
     }
 

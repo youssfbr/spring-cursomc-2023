@@ -6,19 +6,19 @@ import lombok.SneakyThrows;
 @Getter
 public enum CustomerType {
 
-    PESSOA_FISICA(1, "Pessoa Física"),
-    PESSOA_JURIDICA(2, "Pessoa Jurídica");
+    PESSOA_FISICA(0, "Pessoa Física"),
+    PESSOA_JURIDICA(1, "Pessoa Jurídica");
 
-    private int id;
-    private String descricao;
+    private final int id;
+    private final String description;
 
-    private CustomerType(int id , String descricao) {
+    CustomerType(int id , String description) {
         this.id = id;
-        this.descricao = descricao;
+        this.description = description;
     }
 
     @SneakyThrows
-    public  static CustomerType toEnum(Integer id) {
+    public static CustomerType toEnum(Integer id) {
 
         if (id == null) return null;
 

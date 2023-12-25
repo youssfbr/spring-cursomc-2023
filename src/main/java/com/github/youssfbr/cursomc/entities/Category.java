@@ -4,38 +4,23 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.Instant;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Getter
 @Setter
 @NoArgsConstructor
-@RequiredArgsConstructor
+@AllArgsConstructor
 @Table(name = "tb_category")
 @EqualsAndHashCode(of = "id")
-public class Category {
+public class Category extends BaseItem {
 
-    @Id
-    @NonNull
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
-    @NonNull
     @Column(length = 50, nullable = false)
     private String name;
 
-    private Boolean active;
-
-    @Column(updatable = false, columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
-    private Instant createdAt;
-
-    @Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
-    private Instant updatedAt;
-
     @ManyToMany(mappedBy = "categories")
-    private List<Product> products = new ArrayList<>();
-
+    private final Set<Product> products = new HashSet<>();
 
     @PrePersist
     private void prePersist() {

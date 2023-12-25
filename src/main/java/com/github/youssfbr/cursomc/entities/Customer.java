@@ -1,6 +1,5 @@
 package com.github.youssfbr.cursomc.entities;
 
-import com.github.youssfbr.cursomc.entities.enums.CustomerType;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -37,16 +36,18 @@ public class Customer {
     private String cpfOrCnpj;
 
     @NonNull
-    @Enumerated(EnumType.ORDINAL)
-    private CustomerType customerType;
-
+    private Integer customerType;
 
     @OneToMany(mappedBy = "customer")
-    private List<Address> addresses = new ArrayList<>();
+    private final List<Address> addresses = new ArrayList<>();
 
     @ElementCollection
     @CollectionTable(name = "tb_phone")
-    private Set<String> phones = new HashSet<>();
+    private final Set<String> phones = new HashSet<>();
+
+    @OneToMany(mappedBy = "customer")
+    private final List<Order> orders = new ArrayList<>();
+
 
     private Boolean active;
 

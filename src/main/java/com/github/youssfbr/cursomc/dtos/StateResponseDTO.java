@@ -10,7 +10,6 @@ public record StateResponseDTO(
     public StateResponseDTO(State state) {
         this(
                 state.getId() ,
-
                 state.getName()
         );
     }

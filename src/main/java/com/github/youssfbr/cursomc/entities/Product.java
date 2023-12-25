@@ -48,13 +48,19 @@ public class Product {
     @Column(columnDefinition = "TEXT")
     private String note;
 
-    private Boolean active;
-
     @ElementCollection
     @JoinTable(name = "tb_product_url_img",
             joinColumns = @JoinColumn(name = "product_id"))
-    private List<String> imgUrl = new ArrayList<>();
+    private final List<String> imgUrl = new ArrayList<>();
 
+    @ManyToMany
+    @JoinTable(name = "tb_product_category",
+            joinColumns = @JoinColumn(name = "product_id"),
+            inverseJoinColumns = @JoinColumn(name = "category_id"))
+    private final Set<Category> categories = new HashSet<>();
+
+
+    private Boolean active;
 
     @Column(updatable = false, columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
     private Instant createdAt;
@@ -62,11 +68,6 @@ public class Product {
     @Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
     private Instant updatedAt;
 
-    @ManyToMany
-    @JoinTable(name = "tb_product_category",
-            joinColumns = @JoinColumn(name = "product_id"),
-            inverseJoinColumns = @JoinColumn(name = "category_id"))
-    private Set<Category> categories = new HashSet<>();
 
     @PrePersist
     public void prePersist() {

@@ -1,6 +1,7 @@
 package com.github.youssfbr.cursomc.dtos;
 
 import com.github.youssfbr.cursomc.entities.Customer;
+import com.github.youssfbr.cursomc.entities.enums.CustomerType;
 
 import java.util.List;
 import java.util.Set;
@@ -19,9 +20,14 @@ public record CustomerResponseDTO(
                 customer.getId() ,
                 customer.getName() ,
                 customer.getEmail() ,
-                customer.getCustomerType().getDescricao(),
+
+                CustomerType
+                        .toEnum(customer.getCustomerType())
+                        .getDescription() ,
+
                 customer.getCpfOrCnpj() ,
                 customer.getPhones() ,
+
                 customer.getAddresses().stream()
                      .map(AddressResponseDTO::new)
                      .toList()

@@ -28,6 +28,7 @@ public class City {
     @JoinColumn(name = "state_id")
     private State state;
 
+
     private Boolean active;
 
     @Column(updatable = false, columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
