@@ -10,10 +10,10 @@ import com.github.youssfbr.cursomc.services.ICategoryService;
 import com.github.youssfbr.cursomc.services.exceptions.ResourceNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.BeanUtils;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -24,11 +24,9 @@ public class CategoryService implements ICategoryService {
 
     @Override
     @Transactional(readOnly = true)
-    public List<CategoryResponseDTO> findAll() {
-        return categoryRepository.findAllByActiveTrue()
-                .stream()
-                .map(CategoryResponseDTO::new)
-                .toList();
+    public Page<CategoryResponseDTO> findAll(Pageable pageable) {
+        return categoryRepository.findAllByActiveTrue(pageable)
+                .map(CategoryResponseDTO::new);
     }
 
     @Override
