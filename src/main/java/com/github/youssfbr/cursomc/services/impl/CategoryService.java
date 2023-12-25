@@ -1,6 +1,7 @@
 package com.github.youssfbr.cursomc.services.impl;
 
 import com.github.youssfbr.cursomc.dtos.CategoryCreateRequestDTO;
+import com.github.youssfbr.cursomc.dtos.CategoryDeleteRequestDTO;
 import com.github.youssfbr.cursomc.dtos.CategoryResponseDTO;
 import com.github.youssfbr.cursomc.dtos.CategoryUpdateRequestDTO;
 import com.github.youssfbr.cursomc.entities.Category;
@@ -57,6 +58,15 @@ public class CategoryService implements ICategoryService {
 
         final Category productUpdated = categoryRepository.save(categoryToUpdate);
         return new CategoryResponseDTO(productUpdated);
+    }
+
+    @Override
+    @Transactional
+    public void deleteCategory(CategoryDeleteRequestDTO categoryDeleteRequestDTO) {
+
+        final Category categoryActiveToUpdate = existsCategory(categoryDeleteRequestDTO.id());
+
+        categoryActiveToUpdate.setActive(Boolean.FALSE);
     }
 
     private Category existsCategory(Long id) {

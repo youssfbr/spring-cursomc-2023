@@ -1,6 +1,7 @@
 package com.github.youssfbr.cursomc.controllers;
 
 import com.github.youssfbr.cursomc.dtos.CategoryCreateRequestDTO;
+import com.github.youssfbr.cursomc.dtos.CategoryDeleteRequestDTO;
 import com.github.youssfbr.cursomc.dtos.CategoryResponseDTO;
 import com.github.youssfbr.cursomc.dtos.CategoryUpdateRequestDTO;
 import com.github.youssfbr.cursomc.services.ICategoryService;
@@ -46,5 +47,13 @@ public class CategoryController {
     @PutMapping
     public ResponseEntity<CategoryResponseDTO> updateCategory(@RequestBody CategoryUpdateRequestDTO dto) {
         return ResponseEntity.ok(categoryService.updateCategory(dto));
+    }
+
+    @DeleteMapping
+    public ResponseEntity<Void> updateProduct(@RequestBody CategoryDeleteRequestDTO dto) {
+
+        categoryService.deleteCategory(dto);
+
+        return ResponseEntity.noContent().build();
     }
 }

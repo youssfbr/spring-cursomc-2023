@@ -1,6 +1,7 @@
 package com.github.youssfbr.cursomc.services;
 
 import com.github.youssfbr.cursomc.dtos.CategoryCreateRequestDTO;
+import com.github.youssfbr.cursomc.dtos.CategoryDeleteRequestDTO;
 import com.github.youssfbr.cursomc.dtos.CategoryResponseDTO;
 import com.github.youssfbr.cursomc.dtos.CategoryUpdateRequestDTO;
 
@@ -11,4 +12,5 @@ public interface ICategoryService {
     CategoryResponseDTO findById(Long id);
     CategoryResponseDTO createCategory(CategoryCreateRequestDTO categoryCreateRequestDTO);
     CategoryResponseDTO updateCategory(CategoryUpdateRequestDTO categoryUpdateRequestDTO);
+    void deleteCategory(CategoryDeleteRequestDTO categoryDeleteRequestDTO);
 }
