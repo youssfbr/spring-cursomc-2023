@@ -1,5 +1,6 @@
 package com.github.youssfbr.cursomc.entities;
 
+import com.github.youssfbr.cursomc.dtos.CategoryCreateRequestDTO;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -21,6 +22,10 @@ public class Category extends BaseItem {
 
     @ManyToMany(mappedBy = "categories")
     private final Set<Product> products = new HashSet<>();
+
+    public Category(CategoryCreateRequestDTO dto) {
+        name = dto.name();
+    }
 
     @PrePersist
     private void prePersist() {

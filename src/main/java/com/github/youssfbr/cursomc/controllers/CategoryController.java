@@ -1,14 +1,14 @@
 package com.github.youssfbr.cursomc.controllers;
 
+import com.github.youssfbr.cursomc.dtos.CategoryCreateRequestDTO;
 import com.github.youssfbr.cursomc.dtos.CategoryResponseDTO;
 import com.github.youssfbr.cursomc.services.ICategoryService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import java.net.URI;
 import java.util.List;
 
 @RestController
@@ -26,5 +26,19 @@ public class CategoryController {
     @GetMapping("/{id}")
     public ResponseEntity<CategoryResponseDTO> findById(@PathVariable Long id) {
         return ResponseEntity.ok(categoryService.findById(id));
+    }
+
+    @PostMapping
+    public ResponseEntity<CategoryResponseDTO> createCategory(@RequestBody CategoryCreateRequestDTO categoryCreateRequestDTO) {
+
+        final CategoryResponseDTO categoryCreated = categoryService.createCategory(categoryCreateRequestDTO);
+        final Long id = categoryCreated.id();
+
+        URI location = ServletUriComponentsBuilder
+                .fromCurrentRequest()
+                .path("/{id}")
+                .buildAndExpand(id).toUri();
+
+        return ResponseEntity.created(location).body(categoryCreated);
     }
 }

@@ -1,6 +1,8 @@
 package com.github.youssfbr.cursomc.services.impl;
 
+import com.github.youssfbr.cursomc.dtos.CategoryCreateRequestDTO;
 import com.github.youssfbr.cursomc.dtos.CategoryResponseDTO;
+import com.github.youssfbr.cursomc.entities.Category;
 import com.github.youssfbr.cursomc.repositories.ICategoryRepository;
 import com.github.youssfbr.cursomc.services.ICategoryService;
 import com.github.youssfbr.cursomc.services.exceptions.ResourceNotFoundException;
@@ -32,5 +34,15 @@ public class CategoryService implements ICategoryService {
         return categoryRepository.findById(id)
                 .map(CategoryResponseDTO::new)
                 .orElseThrow(() -> new ResourceNotFoundException(NOT_FOUND_MESSAGE + id));
+    }
+
+    @Override
+    @Transactional
+    public CategoryResponseDTO createCategory(CategoryCreateRequestDTO categoryCreateRequestDTO) {
+
+        final Category productToCreate = new Category(categoryCreateRequestDTO);
+        final Category productCreated = categoryRepository.save(productToCreate);
+
+        return new CategoryResponseDTO(productCreated);
     }
 }
