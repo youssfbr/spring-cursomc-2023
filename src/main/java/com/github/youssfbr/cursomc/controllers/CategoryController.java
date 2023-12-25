@@ -2,6 +2,7 @@ package com.github.youssfbr.cursomc.controllers;
 
 import com.github.youssfbr.cursomc.dtos.CategoryCreateRequestDTO;
 import com.github.youssfbr.cursomc.dtos.CategoryResponseDTO;
+import com.github.youssfbr.cursomc.dtos.CategoryUpdateRequestDTO;
 import com.github.youssfbr.cursomc.services.ICategoryService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -40,5 +41,10 @@ public class CategoryController {
                 .buildAndExpand(id).toUri();
 
         return ResponseEntity.created(location).body(categoryCreated);
+    }
+
+    @PutMapping
+    public ResponseEntity<CategoryResponseDTO> updateCategory(@RequestBody CategoryUpdateRequestDTO dto) {
+        return ResponseEntity.ok(categoryService.updateCategory(dto));
     }
 }
